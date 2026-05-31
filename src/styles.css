@@ -1,0 +1,242 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Cinzel", "Playfair Display", serif;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Poppins", "Inter", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-maroon: var(--maroon);
+  --color-maroon-deep: var(--maroon-deep);
+  --color-temple: var(--temple);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-ivory: var(--ivory);
+  --color-sand: var(--sand);
+  --color-sage: var(--sage);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand palette — Bharatanatyam */
+  --maroon-deep: oklch(0.32 0.13 16);     /* #6A1028 */
+  --maroon: oklch(0.32 0.13 16);
+  --temple: oklch(0.38 0.14 14);          /* #8B1E3F */
+  --gold: oklch(0.74 0.13 84);            /* #D4AF37 */
+  --gold-soft: oklch(0.83 0.09 84);
+  --ivory: oklch(0.97 0.012 85);          /* #F8F5EF */
+  --sand: oklch(0.89 0.025 70);           /* #E7D8C9 */
+  --sage: oklch(0.5 0.05 145);            /* #4F6F52 */
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.05 20);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.05 20);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.05 20);
+  --primary: var(--maroon-deep);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--ivory);
+  --secondary-foreground: var(--maroon-deep);
+  --muted: oklch(0.96 0.008 60);
+  --muted-foreground: oklch(0.45 0.03 30);
+  --accent: var(--gold);
+  --accent-foreground: var(--maroon-deep);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.9 0.02 60);
+  --input: oklch(0.9 0.02 60);
+  --ring: var(--gold);
+
+  --gradient-royal: linear-gradient(135deg, oklch(0.28 0.13 16) 0%, oklch(0.38 0.14 14) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.13 84) 0%, oklch(0.65 0.12 70) 100%);
+  --gradient-ivory: linear-gradient(180deg, oklch(0.99 0.005 85) 0%, oklch(0.95 0.018 70) 100%);
+  --shadow-elegant: 0 30px 60px -25px color-mix(in oklab, var(--maroon-deep) 35%, transparent);
+  --shadow-gold: 0 10px 30px -10px color-mix(in oklab, var(--gold) 45%, transparent);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 20);
+  --foreground: var(--ivory);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; }
+  .font-serif-it { font-family: var(--font-serif); font-style: italic; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto max-w-7xl px-6 lg:px-10; }
+
+  .btn-primary {
+    background: var(--gradient-royal);
+    color: var(--ivory);
+    border: 1px solid color-mix(in oklab, var(--gold) 40%, transparent);
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all .35s ease;
+    box-shadow: var(--shadow-gold);
+    display: inline-flex; align-items: center; gap: .6rem;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -12px color-mix(in oklab, var(--gold) 55%, transparent); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ivory);
+    border: 1px solid color-mix(in oklab, var(--gold) 75%, transparent);
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all .35s ease;
+    display: inline-flex; align-items: center; gap: .6rem;
+  }
+  .btn-outline:hover { background: color-mix(in oklab, var(--gold) 15%, transparent); }
+
+  .btn-ghost-maroon {
+    color: var(--maroon-deep);
+    border: 1px solid color-mix(in oklab, var(--maroon-deep) 30%, transparent);
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all .3s ease;
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: transparent;
+  }
+  .btn-ghost-maroon:hover { background: var(--maroon-deep); color: var(--ivory); }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex; align-items: center; gap: 0.8rem;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ""; width: 32px; height: 1px; background: color-mix(in oklab, var(--gold) 70%, transparent);
+  }
+  .eyebrow.left::before { display: none; }
+
+  .h-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: 0.005em;
+  }
+
+  .gold-divider {
+    display: flex; align-items: center; justify-content: center; gap: 14px; color: var(--gold);
+  }
+  .gold-divider::before, .gold-divider::after {
+    content: ""; height: 1px; width: 80px;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 80%, transparent), transparent);
+  }
+
+  .card-elegant {
+    background: var(--card);
+    border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+    border-radius: 18px;
+    box-shadow: 0 1px 0 color-mix(in oklab, var(--gold) 18%, transparent), 0 30px 60px -40px color-mix(in oklab, var(--maroon-deep) 30%, transparent);
+    transition: transform .4s ease, box-shadow .4s ease;
+  }
+  .card-elegant:hover { transform: translateY(-4px); box-shadow: var(--shadow-elegant); }
+
+  .glass-gold {
+    background: color-mix(in oklab, white 65%, transparent);
+    backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in oklab, var(--gold) 35%, transparent);
+  }
+
+  .section-pad { @apply py-24 lg:py-32; }
+
+  .ornament {
+    width: 36px; height: 36px; display: inline-block; color: var(--gold);
+  }
+
+  /* Subtle paisley / mandala pattern background */
+  .bg-mandala {
+    background-color: var(--ivory);
+    background-image:
+      radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--gold) 8%, transparent) 0, transparent 35%),
+      radial-gradient(circle at 85% 80%, color-mix(in oklab, var(--maroon-deep) 6%, transparent) 0, transparent 40%);
+  }
+
+  .bg-royal {
+    background: var(--gradient-royal);
+    color: var(--ivory);
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-gold { color: var(--gold); }
+  .text-maroon { color: var(--maroon-deep); }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .3rem .7rem; border-radius: 999px;
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    background: color-mix(in oklab, var(--gold) 18%, transparent);
+    color: var(--maroon-deep);
+    border: 1px solid color-mix(in oklab, var(--gold) 35%, transparent);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-8px) }
+}
+.float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.fade-up { animation: fade-up .9s ease both; }
